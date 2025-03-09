@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/styles/userlogin.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>User Authentication</title>
+</head>
+
+<body>
+  <div class="main">
+    <div id="message" style="display: none;">
+      {{message}}
+    </div>
+    <p class="sign" align="center">Sign in</p>
+    <form class="form1" action="/user/login" method="POST">
+      <input class="un" type="email" name="email" align="center" placeholder="Email" required>
+      <input class="pass" type="password" name="password" align="center" placeholder="Password" required>
+      <button class="submit" type="submit" align="center">Sign in</button>
+    </form>
+    <p class="forgot" align="center"><a href="#">Forgot Password?</a></p>
+  </div>
+  <script>
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+      const message = messageElement.textContent.trim();
+      if (message) {
+        console.log(message);
+        swal(message);
+      }
+    }
+  </script>
+</body>
+
+</html>

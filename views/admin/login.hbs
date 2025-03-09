@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/adminlogin.css">
+  <title>Admin Login</title>
+</head>
+
+<body>
+  <div class="login">
+    <form action="/admin/login" method="POST">
+      {{#if message}}
+      <div id="message" style="color: red; font-weight: bold; text-align: center;">
+        {{message}}
+      </div>
+      {{/if}}
+      <h1>Login</h1>
+
+      <input type="text" name="email" placeholder="Enter your email" id="email" required>
+      <input type="password" name="password" placeholder="Enter your password" id="password" required>
+      <a href="#" class="forgot">Forgot password?</a>
+      <input type="submit" value="Log In">
+    </form>
+  </div>
+  <div class="shadow"></div>
+  <script>
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+      const message = messageElement.textContent.trim();
+      if (message) {
+        console.log(message);
+      }
+    }
+  </script>
+</body>
+
+</html>

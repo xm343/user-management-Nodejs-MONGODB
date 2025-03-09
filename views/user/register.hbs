@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/styles/register.css">
+<script src="/styles/register.js"></script>
+
+<div class="container">
+  <div class="header">
+    <h2>Create Account</h2>
+  </div>
+  <form id="form" class="form" method="post" action="/user/register" onsubmit="formValidation()">
+    <div id="message" style="display: none;">
+      {{message}}
+    </div>
+    <div class="form-control">
+      <label for="username">Username</label>
+      <input type="text" placeholder="" id="username" name="username" required />
+      <i class="fas fa-check-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small>Error message</small>
+    </div>
+    <div class="form-control">
+      <label for="username">Email</label>
+      <input type="email" placeholder="" id="email" name="email" required />
+      <i class="fas fa-check-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small>Error message</small>
+    </div>
+    <div class="form-control">
+      <label for="username">Password</label>
+      <input type="password" placeholder="" id="password" name="password" required />
+      <i class="fas fa-check-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small>Error message</small>
+    </div>
+    <div class="form-control">
+      <label for="username">Confirm Password</label>
+      <input type="password" placeholder="re-enter" id="password2" name="password2" required />
+      <i class="fas fa-check-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small>Error message</small>
+    </div>
+    <button>Submit</button>
+  </form>
+</div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('form').addEventListener('submit', formValidation);
+  });
+
+  function formValidation(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const password2 = document.getElementById('password2').value.trim();
+
+
+    if (username === '' || email === '' || password === '' || password2 === '') {
+      swal("All fields are required!", "Please fill in all fields.", "error");
+      return false;
+    }
+
+
+    if (password !== password2) {
+      swal("Passwords do not match!", "Please re-enter the same password.", "error");
+      return false;
+    }
+
+    e.target.submit()
+    return true;
+  }
+
+
+</script>
+<script>
+  const messageElement = document.getElementById('message');
+  if (messageElement) {
+    const message = messageElement.textContent.trim(); 
+    if (message) {
+      console.log(message);
+      swal(message); 
+    }
+  }
+
+</script>
