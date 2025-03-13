@@ -93,25 +93,18 @@ const addUser = async (req, res) => {
     }
 };
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req,res)=>{
     try {
-        const { id } = req.params; // Extract user ID from the request URL
+        
+        const {id} = req.params
+        
+        const user = await userModel.findOneAndDelete({_id:id})
+        res.redirect('/admin/dashboard')
 
-        // Find and delete the user by ID
-        const user = await userModel.findByIdAndDelete(id);
-
-        // If no user is found, send an error response
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Redirect back to the dashboard after deletion
-        res.redirect('/admin/dashboard');
     } catch (error) {
-        console.error('Error deleting user:', error);
-        res.status(500).json({ message: 'Something went wrong' });
+        console.log(error)
     }
-};
+}
 
 const logout = async (req, res) => {
     try {

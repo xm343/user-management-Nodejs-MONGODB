@@ -15,7 +15,7 @@ router.post('/add-user', adminAuth.checkSession, adminController.addUser);
 
 router.post('/edit-user', adminAuth.checkSession, adminController.editUser);
 
-router.delete('/delete-user/:id', adminAuth.checkSession, adminController.deleteUser);
+router.get('/delete-user/:id',adminAuth.checkSession,adminController.deleteUser)
 
 router.get('/logout', adminAuth.checkSession, adminController.logout);
 

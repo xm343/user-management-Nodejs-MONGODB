@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
         await newUser.save();
 
         
-        res.render('login', { message: 'User created successfully!' });
+        res.render('user/login', { message: 'User created successfully!' });
     } catch (error) {
         console.error('Error during registration:', error);
         res.status(500).send('Server Error');
@@ -52,7 +52,7 @@ const login = async (req, res) => {
         res.render('user/userHome', { message: 'Login successful!' });
     } catch (error) {
         console.error('Error during login:', error);
-        res.render('login', { message: 'Something went wrong' });
+        res.render('user/login', { message: 'Something went wrong' });
     }
 };
 

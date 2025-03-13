@@ -9,6 +9,8 @@ const nocache = require('nocache')
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
+
+
 app.use(nocache())
 app.use(session({secret:`mysecretkey`,
    resave:false,
@@ -34,6 +36,7 @@ app.use(express.json());
 
 app.use('/user',userRoutes)
 app.use('/admin',adminRoutes)
+
 
 
 connectDB()
