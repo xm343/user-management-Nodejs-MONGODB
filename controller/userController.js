@@ -12,13 +12,14 @@ const registerUser = async (req, res) => {
             
             return res.render('register', { message: 'User already exists!' });
         }
+
         const hashedPassword = await bcrypt.hash(password , saltround)
 
         
         
         const newUser = new userSchema({
-            username,
-            email,
+            username:username,
+            email:email,
             password:hashedPassword
         });
         await newUser.save();
